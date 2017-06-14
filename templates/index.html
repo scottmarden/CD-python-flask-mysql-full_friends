@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Friendship</title>
+		<script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+		<link type="text/css" rel="stylesheet" src="{{url_for('static', filename='css/style.css')}}" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Friends:</h1>
+			<div id="friend_list">
+				<table>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Friend Since</th>
+					{% for friend in friends %}
+					<tr>
+						<td>{{ friend['name'] }}</td>
+						<td>{{ friend['age'] }}</td>
+						<td>{{ friend['MONTHNAME(created_at)'] }} {{ friend['DAY(created_at)'] }}</td>
+						<td>{{ friend['YEAR(created_at)'] }}</td>
+					</tr>
+					{% endfor %}
+					<!-- end for -->
+				</table>
+			</div>
+			<div id="add_friend">
+				<h1>Add a Friend:</h1>
+				<form action="/process" method="post">
+					Name:<input type="text" name="name" />
+					Age:<input type="text" name="age" />
+					<input type="submit" value="submit" name="submit" />
+				</form>
+			</div>
+
+
+
+		</div>
+	</body>
+
+
+
+
+
+</html>
